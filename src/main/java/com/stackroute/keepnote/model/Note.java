@@ -1,11 +1,21 @@
 package com.stackroute.keepnote.model;
 
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDateTime;
 
 /*
  * The class "Note" will be acting as the data model for the Note data in the ArrayList.
  */
+//@Component
 public class Note {
+
+	int noteId;
+	String noteTitle;
+	String noteContent;
+	String noteStatus;
+	LocalDateTime createdAt;
+
 
 	/*
 	 * This class should have five fields (noteId, noteTitle, noteContent,
@@ -14,56 +24,102 @@ public class Note {
 	 * the user but should be always initialized with the system date
 	 */
 
-	public Note() {
-	}
+	public Note() { }
+
+
 
 	/* All the getters/setters definition should be implemented here */
+//
+//	public int getNoteId() {
+//		return 0;
+//
+//	}
+//
+//	public void setNoteId(int noteId) {
+//
+//	}
+//
+//	public String getNoteTitle() {
+//		return null;
+//	}
+//
+//	public void setNoteTitle(String string) {
+//
+//	}
+//
+//	public String getNoteContent() {
+//		return null;
+//	}
+//
+//	public void setNoteContent(String string) {
+//
+//	}
+//
+//	public String getNoteStatus() {
+//		return null;
+//	}
+//
+//	public void setNoteStatus(String string) {
+//
+//	}
+//
+//	public LocalDateTime getCreatedAt() {
+//		return null;
+//	}
+//
+//	public void setCreatedAt(LocalDateTime localdatetime) {
+//
+//	}
 
 	public int getNoteId() {
-		return 0;
-
+		return noteId;
 	}
 
-	public void setNoteId(int intid) {
-
+	public void setNoteId(int noteId) {
+		this.noteId = noteId;
 	}
 
 	public String getNoteTitle() {
-		return null;
+		return noteTitle;
 	}
 
-	public void setNoteTitle(String string) {
-
+	public void setNoteTitle(String noteTitle) {
+		this.noteTitle = noteTitle;
 	}
 
 	public String getNoteContent() {
-		return null;
+		return noteContent;
 	}
 
-	public void setNoteContent(String string) {
-
+	public void setNoteContent(String noteContent) {
+		this.noteContent = noteContent;
 	}
 
 	public String getNoteStatus() {
-		return null;
+		return noteStatus;
 	}
 
-	public void setNoteStatus(String string) {
-
+	public void setNoteStatus(String noteStatus) {
+		this.noteStatus = noteStatus;
 	}
 
 	public LocalDateTime getCreatedAt() {
-		return null;
+		return createdAt;
 	}
 
-	public void setCreatedAt(LocalDateTime localdatetime) {
-
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
 	}
+
+
+
+
+
 
 	/* Override the toString() method */
 
 	@Override
 	public String toString() {
-		return null;
+		return noteId+" "+noteTitle+" "+noteStatus+" "+noteContent+" "+ createdAt;
 	}
 }
