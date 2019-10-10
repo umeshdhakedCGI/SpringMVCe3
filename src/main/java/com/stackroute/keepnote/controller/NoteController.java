@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractRefreshableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,10 +50,12 @@ public class NoteController {
 	 */
 
 
-	ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-	NoteRepository noteRepository = (NoteRepository) context.getBean("noteRepository");
+//	ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+//	NoteRepository noteRepository = (NoteRepository) context.getBean("noteRepository");
 
-	
+@Autowired
+NoteRepository noteRepository;
+
 	
 	/*Define a handler method to read the existing notes by calling the getAllNotes() method 
 	 * of the NoteRepository class and add it to the ModelMap which is an implementation of Map 
@@ -79,9 +82,16 @@ public class NoteController {
 	 * should be sent back to the view using ModelMap.
 	 * This handler method should map to the URL "/saveNote". 
 	*/
+
+//	@Autowired
+//	Note note;
+
 	@RequestMapping("/saveNote")
 	public ModelAndView saveNote(HttpServletRequest request, HttpServletResponse response){
-		Note note = (Note)context.getBean("note");
+
+		Note note = new Note();
+
+		//List<Note> listNote = noteRepository.getList();
 
 		int id = Integer.parseInt(request.getParameter("noteId"));
 		String title = request.getParameter("noteTitle");
@@ -96,10 +106,11 @@ public class NoteController {
 		note.setNoteStatus(status);
 		note.setCreatedAt(createdAt);
 
+	//	noteRepository.setList(listNote);
+
 		if(!noteRepository.exists(id)) {
 			noteRepository.addNote(note);
 		}
-
 
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("index");

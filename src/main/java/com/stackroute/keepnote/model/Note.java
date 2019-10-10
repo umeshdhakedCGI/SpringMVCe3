@@ -1,5 +1,6 @@
 package com.stackroute.keepnote.model;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -7,7 +8,8 @@ import java.time.LocalDateTime;
 /*
  * The class "Note" will be acting as the data model for the Note data in the ArrayList.
  */
-//@Component
+@Component
+@Scope("prototype")
 public class Note {
 
 	int noteId;
